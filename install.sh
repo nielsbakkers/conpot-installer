@@ -10,7 +10,7 @@ ascii_art () {
          | |   | |  | | . ` |  ___/| |  | | | |      | | | . ` |\___ \   | | / /\ \ | |    | |    |  __| |  _  /
          | |___| |__| | |\  | |    | |__| | | |     _| |_| |\  |____) |  | |/ ____ \| |____| |____| |____| | \ \
           \_____\____/|_| \_|_|     \____/  |_|    |_____|_| \_|_____/   |_/_/    \_\______|______|______|_|  \_\
-        version v0.3\n'
+        version v0.4\n'
 }
 check_sudo () {
         ascii_art
@@ -80,6 +80,8 @@ finish_installation () {
         ascii_art
         echo "Restarting the daemon"
         sudo systemctl daemon-reload
+        echo "Start the Conpot service using the command:"
+        echo "  sudo systemctl start conpot"
 }
 
 #Check if the script has been executed as sudo
