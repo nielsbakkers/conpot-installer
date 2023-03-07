@@ -44,7 +44,7 @@ change_rights () {
         echo "Creating conpot directory inside /tmp"
         mkdir -p /tmp/conpot
         echo "Changing rights of the conpot tmp directory"
-        sudo chmod 775 /tmp/conpot
+        sudo chmod 777 /tmp/conpot
         echo "Adding user to the group staff"
         sudo usermod -aG staff $USER
         echo "Adding user to the group sudo"
