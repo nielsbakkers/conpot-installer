@@ -24,5 +24,5 @@ chmod +x install.sh
 
 Run the command below to execute the script.
 ``` bash
-./install.sh
+sudo ./install.sh
 ```
