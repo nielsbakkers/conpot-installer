@@ -10,7 +10,7 @@ ascii_art () {
          | |   | |  | | . ` |  ___/| |  | | | |      | | | . ` |\___ \   | | / /\ \ | |    | |    |  __| |  _  /
          | |___| |__| | |\  | |    | |__| | | |     _| |_| |\  |____) |  | |/ ____ \| |____| |____| |____| | \ \
           \_____\____/|_| \_|_|     \____/  |_|    |_____|_| \_|_____/   |_/_/    \_\______|______|______|_|  \_\
-        version v0.1\n'
+        version v0.3\n'
 }
 check_sudo () {
         ascii_art
@@ -80,20 +80,6 @@ finish_installation () {
         ascii_art
         echo "Restarting the daemon"
         sudo systemctl daemon-reload
-        #Reboot the system
-        echo "The installation will be completed after a reboot"
-        echo "Run the following command to start the service after the reboot:"
-        echo "  systemctl start conpot"
-        echo "Press any key to reboot..."
-        while [ true ]; do
-                read -t 15 -n 1
-                if [ $? = 0 ]; then
-                        sudo reboot
-                        exit;
-                else
-                        echo "Waiting for the keypress..."
-                fi
-        done
 }
 
 #Check if the script has been executed as sudo
