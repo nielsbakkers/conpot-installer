@@ -46,9 +46,9 @@ change_rights () {
         echo "Changing rights of the conpot tmp directory"
         sudo chmod 775 /tmp/conpot
         echo "Adding user to the group staff"
-        sudo usermod -aG staff student
+        sudo usermod -aG staff $USER
         echo "Adding user to the group sudo"
-        sudo usermod -aG sudo student
+        sudo usermod -aG sudo $USER
         echo "Changing rights of the python dist-packages directory"
         sudo chmod -R 775 /usr/local/lib/python3.8/dist-packages/
 }
@@ -67,7 +67,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User="$USER"
+User=$USER
 EnvironmentFile=-/tmp/conpot.env
 ExecStartPre=sh -c 'echo date=\$(date +%%Y_%%m_%%d-%%H:%%M) > /tmp/conpot.env'
 ExecStart=conpot -f --template default --temp_dir /tmp/conpot --logfile /home/student/conpot_\${date}.log
