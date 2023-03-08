@@ -70,7 +70,7 @@ RestartSec=1
 User=$USER
 EnvironmentFile=-/tmp/conpot.env
 ExecStartPre=sh -c 'echo date=\$(date +%%Y_%%m_%%d-%%H:%%M) > /tmp/conpot.env'
-ExecStart=conpot -f --template default --temp_dir /tmp/conpot --logfile /home/student/conpot_\${date}.log
+ExecStart=conpot -f --template default --temp_dir /tmp/conpot --logfile /home/$USER/conpot_\${date}.log
 
 [Install]
 WantedBy=multi-user.target
