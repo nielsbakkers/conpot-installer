@@ -1,6 +1,7 @@
 #!/bin/bash
 
 USER=$(who -m | awk '{print $1}')
+DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
 ascii_art () {
         clear
         echo -e '
@@ -51,6 +52,8 @@ change_rights () {
         sudo usermod -aG sudo $USER
         echo "Changing rights of the python dist-packages directory"
         sudo chmod -R 775 /usr/local/lib/python3.8/dist-packages/
+        echo "Copy conpot config to working directory"
+        cp $DIR/conpot.cfg /home/$USER/ &>/dev/null
 }
 make_service () {
         ascii_art
