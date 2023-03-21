@@ -46,7 +46,7 @@ change_ports () {
     sed -i 's/port="5020"/port="502"/' /home/$USER/conpot/conpot/templates/default/modbus/modbus.xml && \
     sed -i 's/port="10201"/port="102"/' /home/$USER/conpot/conpot/templates/default/s7comm/s7comm.xml && \
     sed -i 's/port="16100"/port="161"/' /home/$USER/conpot/conpot/templates/default/snmp/snmp.xml && \
-    sed -i 's/port="6969"/port="69"/' /home/$USER/conpot/conpot/templates/default/tftp/tftp.xml && \
+    sed -i 's/port="6969"/port="69"/' /home/$USER/conpot/conpot/templates/default/tftp/tftp.xml
 }
 change_rights () {
         ascii_art
