@@ -39,6 +39,15 @@ install_modules () {
         echo "Installing Conpot"
         sudo python3 setup.py install &>/dev/null
 }
+change_ports () {
+    sed -i 's/port="2121"/port="21"/' /home/$USER/conpot/conpot/templates/default/ftp/ftp.xml && \
+    sed -i 's/port="8800"/port="80"/' /home/$USER/conpot/conpot/templates/default/http/http.xml && \
+    sed -i 's/port="6230"/port="623"/' /home/$USER/conpot/conpot/templates/default/ipmi/ipmi.xml && \
+    sed -i 's/port="5020"/port="502"/' /home/$USER/conpot/conpot/templates/default/modbus/modbus.xml && \
+    sed -i 's/port="10201"/port="102"/' /home/$USER/conpot/conpot/templates/default/s7comm/s7comm.xml && \
+    sed -i 's/port="16100"/port="161"/' /home/$USER/conpot/conpot/templates/default/snmp/snmp.xml && \
+    sed -i 's/port="6969"/port="69"/' /home/$USER/conpot/conpot/templates/default/tftp/tftp.xml && \
+}
 change_rights () {
         ascii_art
         echo "Changing the rights of multple directories and files"
@@ -103,6 +112,7 @@ then
                 [kK] ) echo Ok, the directory will be kept.;
                         install_modules
                         change_rights
+                        change_ports
                         make_service
                         finish_installation
                         exit;;
@@ -111,6 +121,7 @@ then
                         git_clone
                         install_modules
                         change_rights
+                        change_ports
                         make_service
                         finish_installation
                         exit;;
@@ -121,6 +132,7 @@ else
         git_clone
         install_modules
         change_rights
+        change_ports
         make_service
         finish_installation
 fi
