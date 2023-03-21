@@ -46,7 +46,8 @@ change_ports () {
     sed -i 's/port="5020"/port="502"/' /usr/local/lib/python3.8/dist-packages/conpot-0.6.0-py3.8.egg/conpot/templates/default/modbus/modbus.xml && \
     sed -i 's/port="10201"/port="102"/' /usr/local/lib/python3.8/dist-packages/conpot-0.6.0-py3.8.egg/conpot/templates/default/s7comm/s7comm.xml && \
     sed -i 's/port="16100"/port="161"/' /usr/local/lib/python3.8/dist-packages/conpot-0.6.0-py3.8.egg/conpot/templates/default/snmp/snmp.xml && \
-    sed -i 's/port="6969"/port="69"/' /usr/local/lib/python3.8/dist-packages/conpot-0.6.0-py3.8.egg/conpot/templates/default/tftp/tftp.xml
+    sed -i 's/port="6969"/port="69"/' /usr/local/lib/python3.8/dist-packages/conpot-0.6.0-py3.8.egg/conpot/templates/default/tftp/tftp.xml && \
+    sudo setcap cap_net_bind_service=+ep /usr/bin/python3.8
 }
 change_rights () {
         ascii_art
