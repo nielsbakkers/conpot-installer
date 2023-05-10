@@ -64,6 +64,9 @@ change_rights () {
         sudo chmod -R 775 /usr/local/lib/python3.8/dist-packages/
         echo "Copy conpot config to working directory"
         cp $DIR/conpot.cfg /home/$USER/ &>/dev/null
+        echo "Creating log directory"
+        mkdir -p /home/$USER/log
+        sudo chown $USER:$USER /home/$USER/log
 }
 make_service () {
         ascii_art
@@ -83,8 +86,8 @@ RestartSec=1
 User=$USER
 EnvironmentFile=-/tmp/conpot.env
 ExecStartPre=sh -c 'echo date=\$(date +%%Y_%%m_%%d-%%H:%%M) > /tmp/conpot.env && mkdir -p /tmp/conpot'
-ExecStart=conpot --template default --temp_dir /tmp/conpot --logfile /home/$USER/conpot.log --config /home/$USER/conpot.cfg
-ExecStop=sh -c 'mkdir -p /home/$USER/archive/ && mv /home/$USER/conpot.json /home/$USER/archive/conpot_\${date}.json && mv /home/$USER/conpot.log /home/$USER/archive/conpot_\${date}.log'
+ExecStart=conpot --template default --temp_dir /tmp/conpot --logfile /home/$USER/log/conpot.log --config /home/$USER/conpot.cfg
+ExecStop=sh -c 'mkdir -p /home/$USER/archive/ && mv /home/$USER/log/conpot.json /home/$USER/archive/conpot_\${date}.json && mv /home/$USER/log/conpot.log /home/$USER/archive/conpot_\${date}.log'
 
 [Install]
 WantedBy=multi-user.target
